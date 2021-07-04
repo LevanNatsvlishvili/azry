@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from '@material-ui/core/Box';
 import InputBase from "@material-ui/core/InputBase";
-
+import Modal from "./Components/Modal";
+import AddUserForm from "./AddUserForm";
 
 const TableToolbar = (props) => {
+  const [open, setOpen] = useState(false);
 
-  const { handleSearch, value } = props;
+  const handleModal = () => {
+    setOpen(!open);
+  }
+
+  const { handleSearch, value, insertRow } = props;
   return (
     <Box
       boxSizing='border-box'
@@ -15,7 +21,12 @@ const TableToolbar = (props) => {
       minHeight='56px'
       width='100%'
       borderBottom='1px solid rgba(224, 224, 224, 1)'>
-      <Box border='1px solid' borderRadius='6px' padding='4px'>
+
+      <Modal open={open} handleModal={handleModal}>
+        <AddUserForm insertRow={insertRow} />
+      </Modal>
+
+      <Box ml='auto' border='1px solid' borderRadius='6px' padding='4px'>
         <InputBase
           placeholder='Search'
           onChange={handleSearch}

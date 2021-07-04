@@ -19,20 +19,23 @@ const Body = (props) => {
     <TableBody>
       {rows
         .filter(row => searchInArray(row, search))
-        .map((row, index) => (
-          <TableRow key={row.id}>
-            <TableCell align="left">{row.id}</TableCell>
-            <TableCell align="left">{row.firstName}</TableCell>
-            <TableCell align="left">{row.lastName}</TableCell>
-            <TableCell align="left">{row.age}</TableCell>
-            <TableCell align="left">
-              <ActiveState handleState={handleState} row={row} isActive={row.activated} />
-            </TableCell>
-            <TableCell align="left">
-              <DeleteRow handleDelete={handleDelete} index={index} />
-            </TableCell>
-          </TableRow>
-        ))}
+        .map((row, index) => {
+          console.log(row.id.length);
+          return (
+            <TableRow key={row.id}>
+              <TableCell align="left">{row.id}</TableCell>
+              <TableCell align="left">{row.firstName}</TableCell>
+              <TableCell align="left">{row.lastName}</TableCell>
+              <TableCell align="left">{row.age}</TableCell>
+              <TableCell align="left">
+                <ActiveState handleState={handleState} row={row} isActive={row.activated} />
+              </TableCell>
+              <TableCell align="left">
+                <DeleteRow handleDelete={handleDelete} index={index} />
+              </TableCell>
+            </TableRow>
+          )
+        })}
     </TableBody>
   );
   return null;

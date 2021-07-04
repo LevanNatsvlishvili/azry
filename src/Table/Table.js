@@ -55,9 +55,13 @@ const TableComponent = () => {
     setSearch(e.target.value);
   }
 
+  const insertRow = (row) => {
+    setRows([...rows, row]);
+  }
+  console.log(rows);
   return (
     <TableContainer component={Paper}>
-      <TableToolbar value={search} handleSearch={handleSearch} />
+      <TableToolbar insertRow={insertRow} rows={rows} value={search} handleSearch={handleSearch} />
       <Table className={classes.table} aria-label="simple table">
         <TableHeading />
         <TableBody
