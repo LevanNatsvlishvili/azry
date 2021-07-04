@@ -14,6 +14,7 @@ const TableHeading = (props) => {
         <TableCell align="left">Age</TableCell>
         <TableCell align="left">Activated</TableCell>
         <TableCell align="left"></TableCell>
+        <TableCell align="left"></TableCell>
       </TableRow>
     </TableHead>
   );
